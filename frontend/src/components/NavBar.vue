@@ -8,7 +8,7 @@ import themeToggler from './elements/themeToggler.vue';
       Biblioteka
     </div>
     <div>
-      Sklep
+      Zainstalowane
     </div>
     <div>
       Komputer
