@@ -5,21 +5,21 @@ import themeToggler from './elements/themeToggler.vue';
 
 <template>
   <nav class="w-full flex justify-evenly bg-blue-400 dark:bg-blue-600 dark:text-white font-bold text-xl py-9 uppercase">
-    <div class="hover:bg-blue-300 py-2 px-3 border-2 rounded-xl cursor-pointer">
-      <RouterLink :to="{ name: 'Library' }">
+    <RouterLink :to="{ name: 'Library' }">
+      <div class="hover:bg-blue-300 py-2 px-3 border-2 rounded-xl cursor-pointer">
         Biblioteka
-      </RouterLink>
-    </div>
-    <div class="hover:bg-blue-300 py-2 px-3 border-2 rounded-xl cursor-pointer">
-      <RouterLink :to="{ name: 'Downloaded' }">
-        Zainstalowane
-      </RouterLink>
-    </div>
-    <div class="hover:bg-blue-300 py-2 px-3 border-2 rounded-xl cursor-pointer">
-      <RouterLink :to="{ name: 'Computer' }">
+      </div>
+    </RouterLink>
+    <RouterLink :to="{ name: 'Downloaded' }">
+      <div class="hover:bg-blue-300 py-2 px-3 border-2 rounded-xl cursor-pointer">
+          Zainstalowane
+      </div>
+    </RouterLink>
+    <RouterLink :to="{ name: 'Computer' }">
+      <div class="hover:bg-blue-300 py-2 px-3 border-2 rounded-xl cursor-pointer">
         Komputer
-      </RouterLink>
-    </div>
+      </div>
+    </RouterLink>
     <div class="flex justify-end">
       <themeToggler/>
     </div>
