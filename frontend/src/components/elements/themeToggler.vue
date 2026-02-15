@@ -7,7 +7,7 @@ const { theme, toggleTheme } = useTheme()
 
 <template>
   <button
-  class="p-2 rounded-full hover:bg-white/20 dark:hover:bg-black/20"
+  class="p-3 rounded-full hover:bg-white/20 dark:hover:bg-black/20 cursor-pointer"
   type="button"
   title="Toggle theme"
   aria-label="Toggle theme"
