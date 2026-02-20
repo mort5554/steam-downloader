@@ -12,16 +12,18 @@ class GetOwnedGamesController extends Controller
         try{
             $response = $service->getOwnedGames();
             $response = $response['response'];
+            \Log::info('test', ['test' => $response]);
             return response()->json(
             [
-                    'game_count' => $response['game_count'],
+                    'games_count' => $response['game_count'],
                     'games' => collect($response['games'])->map(function($game){
                         return[
                             'appid' => $game['appid'],
                             'name' => $game['name'],
                             'img_icon_url' => "https://media.steampowered.com/steamcommunity/public/images/apps/{$game['appid']}/{$game['img_icon_url']}.jpg",
-                            'img_capsule' => "https://cdn.cloudflare.steamstatic.com/steam/apps/{$game['appid']}/capsule_231x87.jpg",
-                            'img_header' => "https://cdn.cloudflare.steamstatic.com/steam/apps/{$game['appid']}/header.jpg",
+                            'img_capsule_url' => "https://cdn.cloudflare.steamstatic.com/steam/apps/{$game['appid']}/capsule_231x87.jpg",
+                            'img_header_url' => "https://cdn.cloudflare.steamstatic.com/steam/apps/{$game['appid']}/header.jpg",
+                            'playtime_forever' => $game['playtime_forever'],
                         ];
                     })
                 ]

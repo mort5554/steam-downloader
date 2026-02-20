@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router';
-import themeToggler from './elements/themeToggler.vue';
+import ThemeToggler from './elements/ThemeToggler.vue';
 </script>
 
 <template>
@@ -21,7 +21,7 @@ import themeToggler from './elements/themeToggler.vue';
       </div>
     </RouterLink>
     <div class="flex justify-end">
-      <themeToggler/>
+      <ThemeToggler/>
     </div>
   </nav>
 </template>
