@@ -4,19 +4,29 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Services\SteamService;
+use Illuminate\Http\Request;
 
 class GetOwnedGamesController extends Controller
 {
-    public function getOwnedGames(SteamService $service)
+    public function getOwnedGames(Request $request, SteamService $service)
     {
         try{
-            $response = $service->getOwnedGames();
+            $response = $service->getOwnedGamesService();
             $response = $response['response'];
-            \Log::info('test', ['test' => $response]);
+            $games = collect($response['games']);
+
+            $search = $request->query('search');
+
+            if ($search) {
+                $games = $games->filter(function ($game) use($search) {
+                    return str_contains(strtolower($game['name']), strtolower($search));
+                });
+            }
+
             return response()->json(
             [
                     'games_count' => $response['game_count'],
-                    'games' => collect($response['games'])->map(function($game){
+                    'games' => $games->map(function($game){
                         return[
                             'appid' => $game['appid'],
                             'name' => $game['name'],

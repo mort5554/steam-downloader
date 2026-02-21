@@ -31,7 +31,7 @@
 </script>
 
 <template>
-  <div class="relative w-full h-24 mt-3 rounded-xl overflow-hidden shadow-lg group cursor-pointer">
+  <div class="relative w-full h-24 mt-3 rounded-xl overflow-hidden shadow-lg group cursor-pointer border-3 border-blue-400 dark:border-blue-700">
     <div 
       class="absolute inset-0 bg-cover bg-center scale-105 group-hover:scale-110 transition duration-500"
       :style="{ backgroundImage: `url(${imgHeaderUrl})` }"

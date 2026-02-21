@@ -19,7 +19,7 @@ class SteamService
         $this->baseUrl = 'https://api.steampowered.com';
     }
 
-    public function getOwnedGames(){
+    public function getOwnedGamesService(){
         // $response = Http::get($this->baseUrl.'/?key='.$this->apiKey.'&steamid='.$this->accountId.'&include_played_free_games=true&include_appinfo=true');
         $response = Http::get($this->baseUrl.''.$this->getOwnedGamesUrl, [
             'key' => $this->apiKey,
