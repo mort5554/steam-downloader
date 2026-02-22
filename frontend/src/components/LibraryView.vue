@@ -1,10 +1,12 @@
 <script setup>
   import api from '@/services/api'
-  import { ref, onMounted, watch } from 'vue';
+  import { ref, onMounted, watch } from 'vue'
 
-  import GameCard from './elements/GameCard.vue';
-  import SearchBar from './elements/SearchBar.vue';
-  import PaginationSuper from './elements/PaginationSuper.vue';
+  import GameCard from './elements/GameCard.vue'
+  import SearchBar from './elements/SearchBar.vue'
+  import PaginationSuper from './elements/PaginationSuper.vue'
+
+  let debounceTimer = null
 
   const games = ref()
   const gamesCount = ref(0)
@@ -27,8 +29,12 @@
     catch(e){}
   }
 
-  watch([searchValue, page], function(){
-    loadLibrary()
+  watch([searchValue, page], () => {
+    clearTimeout(debounceTimer)
+
+    debounceTimer = setTimeout(() => {
+      loadLibrary()
+    }, 600)
   })
 
   onMounted(async () => {
