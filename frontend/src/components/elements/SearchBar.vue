@@ -1,12 +1,16 @@
 <script setup>
   let emit = defineEmits(['update:searchValue'])
 
-  defineProps({
+  const props = defineProps({
     searchValue: { type: String, default: '' },
   })
 
   function update(e){
     emit('update:searchValue', e.target.value)
+  }
+
+  function clear(){
+    emit('update:searchValue', '')
   }
 </script>
 
@@ -26,6 +30,7 @@
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
+        @click="clear"
       >
         <path
           stroke-linecap="round"
