@@ -56,7 +56,7 @@
       <GameCard
         v-if="games"
         v-for="(game, index) in games"
-        :id="game.appid"
+        :key="game.appid"
         :name="game.name"
         :playtimeForever="game.playtime_forever"
         :imgIconUrl="game.img_icon_url"
