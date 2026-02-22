@@ -18,6 +18,7 @@
   const searchValue = ref('')
 
   async function loadLibrary(){
+    games.value = null
     try{
       const { data: gamesData } = await api.get(`/api/get_owned_games?search=${searchValue.value}&page=${page.value}`)
       currentPage.value = gamesData['current_page']
