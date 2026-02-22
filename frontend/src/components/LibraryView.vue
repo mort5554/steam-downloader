@@ -37,6 +37,10 @@
     }, 600)
   })
 
+  watch(searchValue, () => {
+    page.value = 1
+  })
+
   onMounted(async () => {
     loadLibrary()
   })
