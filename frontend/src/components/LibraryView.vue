@@ -4,23 +4,30 @@
 
   import GameCard from './elements/GameCard.vue';
   import SearchBar from './elements/SearchBar.vue';
+  import PaginationSuper from './elements/PaginationSuper.vue';
 
   const games = ref()
   const gamesCount = ref(0)
+
+  const currentPage = ref(1)
+  const lastPage = ref(1)
+  const page = ref(1)
 
   const searchValue = ref('')
 
   async function loadLibrary(){
     try{
-      const { data: gamesData } = await api.get(`/api/get_owned_games?search=${searchValue.value}`)
-      games.value = gamesData.games
+      const { data: gamesData } = await api.get(`/api/get_owned_games?search=${searchValue.value}&page=${page.value}`)
+      currentPage.value = gamesData['current_page']
+      lastPage.value = gamesData['last_page']
+      games.value = gamesData['data']
+      console.log(gamesData)
       gamesCount.value = gamesData.games_count
-      console.log(gamesData.games)
     }
     catch(e){}
   }
 
-  watch(searchValue, function(){
+  watch([searchValue, page], function(){
     loadLibrary()
   })
 
@@ -46,5 +53,8 @@
         :imgCapsuleUrl="game.img_capsule_url"
         :imgHeaderUrl="game.img_header_url"
       />
+      <div class="w-full h-20 flex items-center pl-10 mt-4 bg-blue-300 dark:bg-blue-500 rounded">
+        <PaginationSuper :lastPage="lastPage" :currentPage="currentPage" v-model:changePage="page"/>
+      </div>
     </main>
 </template>
