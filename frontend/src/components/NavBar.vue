@@ -17,8 +17,8 @@
           Zainstalowane
       </div>
     </RouterLink>
-    <RouterLink :to="{ name: 'Computer' }" :class="route.name == 'Computer' ? 'bg-blue-300 dark:bg-blue-400' : ''">
-      <div class="hover:bg-blue-300 py-2 px-3 border-2 rounded-xl cursor-pointer">
+    <RouterLink :to="{ name: 'Computer' }">
+      <div class="hover:bg-blue-300 py-2 px-3 border-2 rounded-xl cursor-pointer" :class="route.name == 'Computer' ? 'bg-blue-300 dark:bg-blue-400' : ''">
         Komputer
       </div>
     </RouterLink>
