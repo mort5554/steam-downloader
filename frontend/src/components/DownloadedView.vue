@@ -32,6 +32,7 @@
       :name="game.name"
       :imgHeaderUrl="game.img_header_url"
       :imgIconUrl="game.img_header_url"
+      :size="game.size"
     />
     <GameCardSkeleton v-else v-for="i in 10"/>
   </main>

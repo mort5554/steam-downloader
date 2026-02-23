@@ -12,6 +12,7 @@
     imgHeaderUrl: { type: String, default: null },
     index: { type: Number, default: 0 },
     playtimeForever: { type: Number, default: 0 },
+    size: { type: Number, default: 0 },
   })
 
   if((Math.round((props.playtimeForever / 60) * 100) / 100) < 1){
@@ -25,6 +26,18 @@
     if(playtimeMin.value !== 0){
       playtime.value = playtime.value + pluralize(playtime.value, ' godzina', ' godziny', ' godzin') + ' ' + playtimeMin.value
       + pluralize(playtimeMin.value, ' minuta', ' minuty', ' minut')
+    }
+  }
+
+  function formatBytes(bytes){
+    const gb = bytes / 1000 / 1000 / 1000
+    const mb = bytes / 1000 / 1000
+
+    if(gb > 1){
+      return gb.toFixed(0) + ' GB'
+    }
+    else{
+      return mb.toFixed(0) + ' MB'
     }
   }
 </script>
@@ -47,8 +60,13 @@
         />
       </div>
       <div class="flex flex-col justify-center text-black dark:text-white">
-        <div class="text-lg font-semibold drop-shadow">
-          {{ name }}
+        <div class="flex flex-row gap-5">
+          <div class="text-lg font-semibold drop-shadow">
+            {{ name }}
+          </div>
+          <div v-if="size" class="font-semibold drop-shadow">
+            {{ formatBytes(size) }}
+          </div>
         </div>
         <div class="text-sm text-black/60 dark:text-white/60">
           {{ playtime }}
