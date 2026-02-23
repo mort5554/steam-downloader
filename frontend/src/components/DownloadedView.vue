@@ -3,6 +3,7 @@
   import { ref, onMounted } from 'vue'
 
   import GameCard from './elements/GameCard.vue'
+  import GameCardSkeleton from './elements/GameCardSkeleton.vue'
 
   const games = ref()
 
@@ -29,6 +30,9 @@
       v-for="(game, index) in games"
       :key="game.appid"
       :name="game.name"
+      :imgHeaderUrl="game.img_header_url"
+      :imgIconUrl="game.img_header_url"
     />
+    <GameCardSkeleton v-else v-for="i in 10"/>
   </main>
 </template>

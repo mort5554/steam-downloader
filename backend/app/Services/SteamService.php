@@ -41,7 +41,19 @@ class SteamService
     public function getInstalledGamesService(){
         $response = Http::get($this->tailscaleIp.':'.$this->agentPort.'/'.$this->agentUri);
 
-        return $response;
+        $games = collect($response->json());
+
+        $games = $games->map(function($game){
+            return [
+                'appid' => $game['appid'],
+                'name' => $game['name'],
+                'installdir' => $game['installdir'],
+                'size' => $game['size'],
+                'img_header_url' => "https://cdn.cloudflare.steamstatic.com/steam/apps/{$game['appid']}/header.jpg",
+            ];
+        });
+
+        return $games;
     }
 
     // public function getGameDetails($appid){

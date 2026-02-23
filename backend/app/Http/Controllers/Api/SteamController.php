@@ -12,7 +12,7 @@ class SteamController extends Controller
         try{
             $response = $service->getInstalledGamesService();
 
-            return $response->json();
+            return $response;
         }
         catch(\Throwable $e){
             \Log::error('SteamController error'.$e->getMessage(), ['exception' => $e]);
