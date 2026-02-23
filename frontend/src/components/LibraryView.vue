@@ -3,6 +3,7 @@
   import { ref, onMounted, watch } from 'vue'
 
   import GameCard from './elements/GameCard.vue'
+  import GameCardSkeleton from './elements/GameCardSkeleton.vue'
   import SearchBar from './elements/SearchBar.vue'
   import PaginationSuper from './elements/PaginationSuper.vue'
 
@@ -64,6 +65,7 @@
         :imgCapsuleUrl="game.img_capsule_url"
         :imgHeaderUrl="game.img_header_url"
       />
+      <GameCardSkeleton v-else v-for="i in 10"/>
       <div class="w-full h-20 flex items-center pl-10 mt-4 bg-blue-300 dark:bg-blue-500 rounded">
         <PaginationSuper :lastPage="lastPage" :currentPage="currentPage" v-model:changePage="page"/>
       </div>
