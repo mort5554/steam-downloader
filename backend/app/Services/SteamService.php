@@ -11,11 +11,11 @@ class SteamService
     private string $tailscaleIp;
     private string $agentPort;
 
-    public string $baseGamesListUrl = 'https://api.steampowered.com/';
+    public string $baseGamesListUrl = 'api.steampowered.com/';
     public string $getOwnedGamesUrl = 'IPlayerService/GetOwnedGames/v0001/';
 
-    public string $baseGamesDetailsUrl = 'https://store.steampowered.com/';
-    public string $getGameDetailsUrl = 'api/appdetails/';
+    // public string $baseGamesDetailsUrl = 'store.steampowered.com/';
+    // public string $getGameDetailsUrl = 'api/appdetails/';
 
     public string $agentUri = 'installed-games/';
 

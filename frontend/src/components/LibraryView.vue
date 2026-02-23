@@ -25,7 +25,6 @@
       currentPage.value = gamesData['current_page']
       lastPage.value = gamesData['last_page']
       games.value = gamesData['data']
-      console.log(gamesData)
       gamesCount.value = gamesData.games_count
     }
     catch(e){}
