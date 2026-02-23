@@ -8,16 +8,22 @@ class SteamService
 {
     private string $apiKey;
     private string $accountId;
+    private string $tailscaleIp;
+    private string $agentPort;
 
     public string $baseGamesListUrl = 'https://api.steampowered.com/';
-    public string $getOwnedGamesUrl = 'IPlayerService/GetOwnedGames/v0001';
+    public string $getOwnedGamesUrl = 'IPlayerService/GetOwnedGames/v0001/';
 
     public string $baseGamesDetailsUrl = 'https://store.steampowered.com/';
-    public string $getGameDetailsUrl = 'api/appdetails';
+    public string $getGameDetailsUrl = 'api/appdetails/';
+
+    public string $agentUri = 'installed-games/';
 
     public function __construct(){
         $this->apiKey = config('steam.key');
         $this->accountId = config('steam.account_id');
+        $this->tailscaleIp = config('steam.tailscale_ip');
+        $this->agentPort = config('steam.agent_port');
     }
 
     public function getOwnedGamesService(){
@@ -28,6 +34,12 @@ class SteamService
             'include_played_free_games' => true,
             'include_appinfo' => true,
         ]);
+
+        return $response;
+    }
+
+    public function getInstalledGamesService(){
+        $response = Http::get($this->tailscaleIp.':'.$this->agentPort.'/'.$this->agentUri);
 
         return $response;
     }

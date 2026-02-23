@@ -12,4 +12,4 @@ Route::get('/test', function(){
 
 Route::get('/get_owned_games', [GetOwnedGamesController::class, 'getOwnedGames']);
 
-Route::post('/installed-games', [SteamController::class, 'installed']);
+Route::get('/installed-games', [SteamController::class, 'getInstalledGames']);

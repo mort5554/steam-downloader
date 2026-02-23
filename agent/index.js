@@ -9,4 +9,6 @@ app.get('/installed-games', (req, res) => {
   res.json(games);
 });
 
+console.log('Serwer działa');
+
 app.listen(PORT, "100.122.221.128");
