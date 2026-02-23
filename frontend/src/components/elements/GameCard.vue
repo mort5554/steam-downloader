@@ -39,7 +39,7 @@
     <div class="absolute inset-0 backdrop-blur-xs bg-white/30 dark:bg-black/50"></div>
 
     <div class="relative flex items-center h-full px-4 gap-4">
-      <div class="flex-shrink-0">
+      <div class="shrink-0">
         <img 
           :src="imgIconUrl"
           alt="Game Icon"
