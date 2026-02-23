@@ -9,7 +9,7 @@
   async function loadDownloadedGames(){
     games.value = null
     try{
-      const { data: gamesData } = await api.get(`/api/installed-games`)
+      const { data: gamesData } = await api.get(`/api/installed_games`)
       games.value = gamesData
 
       console.log(games.value)

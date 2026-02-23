@@ -23,7 +23,6 @@ function getInstalledGames() {
       name: app.name,
       installdir: app.installdir,
       size: app.SizeOnDisk,
-      lastPlayed: app.LastPlayed
     });
 
   });

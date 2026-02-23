@@ -9,7 +9,6 @@
     id: { type: Number, default: null },
     name: { type: String, default: '' },
     imgIconUrl: { type: String, default: null },
-    imgCapsuleUrl: { type: String, default: null },
     imgHeaderUrl: { type: String, default: null },
     index: { type: Number, default: 0 },
     playtimeForever: { type: Number, default: 0 },

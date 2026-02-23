@@ -11,17 +11,23 @@ class GetOwnedGamesController extends Controller
 {
     public function paginateCollection($items, $perPage = 10)
     {
-        $page = LengthAwarePaginator::resolveCurrentPage();
+        try{
+            $page = LengthAwarePaginator::resolveCurrentPage();
 
-        $results = $items->slice(($page - 1) * $perPage, $perPage)->values();
+            $results = $items->slice(($page - 1) * $perPage, $perPage)->values();
 
-        return new LengthAwarePaginator(
-            $results,
-            $items->count(),
-            $perPage,
-            $page,
-            ['path' => request()->url()]
-        );
+            return new LengthAwarePaginator(
+                $results,
+                $items->count(),
+                $perPage,
+                $page,
+                ['path' => request()->url()]
+            );
+        }
+        catch(\Throwable $e){
+            \Log::error('GetOwnedGamesController error'.$e->getMessage(), ['exception' => $e]);
+            return response()->json(['message' => 'Server error'.$e], 500);
+        }
     }
 
     public function getOwnedGames(Request $request, SteamService $service)
@@ -44,7 +50,6 @@ class GetOwnedGamesController extends Controller
                     'appid' => $game['appid'],
                     'name' => $game['name'],
                     'img_icon_url' => "https://media.steampowered.com/steamcommunity/public/images/apps/{$game['appid']}/{$game['img_icon_url']}.jpg",
-                    'img_capsule_url' => "https://cdn.cloudflare.steamstatic.com/steam/apps/{$game['appid']}/capsule_231x87.jpg",
                     'img_header_url' => "https://cdn.cloudflare.steamstatic.com/steam/apps/{$game['appid']}/header.jpg",
                     'playtime_forever' => $game['playtime_forever'],
                 ];

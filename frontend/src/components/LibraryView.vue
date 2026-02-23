@@ -62,7 +62,6 @@
         :name="game.name"
         :playtimeForever="game.playtime_forever"
         :imgIconUrl="game.img_icon_url"
-        :imgCapsuleUrl="game.img_capsule_url"
         :imgHeaderUrl="game.img_header_url"
       />
       <GameCardSkeleton v-else v-for="i in 10"/>
