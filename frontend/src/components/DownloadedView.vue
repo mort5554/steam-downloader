@@ -15,10 +15,8 @@
   async function loadDownloadedGames(){
     games.value = null
     try{
-      const { data: gamesData } = await api.get(`/api/installed_games?search=${searchValue.value}`)
+      const { data: gamesData } = await api.get(`installed_games?search=${searchValue.value}`)
       games.value = gamesData
-
-      console.log(games.value)
     }
     catch(e){}
   }

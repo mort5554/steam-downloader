@@ -21,13 +21,15 @@
   async function loadLibrary(){
     games.value = null
     try{
-      const { data: gamesData } = await api.get(`/api/get_owned_games?search=${searchValue.value}&page=${page.value}`)
+      const { data: gamesData } = await api.get(`get_owned_games?search=${searchValue.value}&page=${page.value}`)
       currentPage.value = gamesData['current_page']
       lastPage.value = gamesData['last_page']
       games.value = gamesData['data']
       gamesCount.value = gamesData.games_count
     }
-    catch(e){}
+    catch(e){
+      console.error(e)
+    }
   }
 
   watch([searchValue, page], () => {

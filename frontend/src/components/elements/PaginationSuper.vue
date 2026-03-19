@@ -10,7 +10,7 @@ const emit = defineEmits(['update:changePage'])
 function goTo(page){
   if (!page || page === props.currentPage) return
   if (page > props.lastPage) return
-  console.log(page)
+
   emit('update:changePage', page)
 }
 </script>
